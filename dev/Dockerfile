@@ -17,21 +17,22 @@ zaproxy \
 zmap \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN apt-get install -y  \
+RUN apt-get -yqq update \
+    && apt-get install -y  \
     python-pip \
     python3 \
     python3-pip \
     golang \
-    php7 \
+    php \
     nodejs \
     yarn \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install vscode
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
 && sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ \
 && sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
 && sudo apt-get install apt-transport-https \
-&& sudo apt-get update \
-&& sudo apt-get install code # or code-insiders \
+&& sudo apt-get update -yqq \
+&& sudo apt-get install -y code # or code-insiders \
 && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
