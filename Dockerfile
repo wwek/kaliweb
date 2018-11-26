@@ -27,8 +27,8 @@ RUN apt-get -y update  \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # 阿里云镜像加速
-RUN echo "deb https://mirrors.ustc.edu.cn/kali/ kali-rolling main contrib non-free" > /etc/apt/sources.list \
-    && echo "deb-src https://mirrors.ustc.edu.cn/kali/ kali-rolling main contrib non-free" >> /etc/apt/sources.list
+RUN echo "deb https://mirrors.aliyun.com/kali/ kali-rolling main contrib non-free" > /etc/apt/sources.list \
+    && echo "deb-src https://mirrors.aliyun.com/kali/ kali-rolling main contrib non-free" >> /etc/apt/sources.list
 
 ENV DEBIAN_FRONTEND noninteractive
 
