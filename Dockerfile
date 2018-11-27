@@ -27,8 +27,8 @@ RUN apt-get -y update  \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # 阿里云镜像加速
-RUN echo "deb https://mirrors.aliyun.com/kali/ kali-rolling main contrib non-free" > /etc/apt/sources.list \
-    && echo "deb-src https://mirrors.aliyun.com/kali/ kali-rolling main contrib non-free" >> /etc/apt/sources.list
+RUN echo "deb https://mirrors.aliyun.com/kali kali-rolling main contrib non-free" > /etc/apt/sources.list \
+    && echo "deb-src https://mirrors.aliyun.com/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -47,11 +47,14 @@ terminator \
 wget \
 curl \
 fcitx \
-menu && \
-cd /root && git clone https://github.com/kanaka/noVNC.git && \
-cd noVNC/utils && git clone https://github.com/kanaka/websockify websockify && \
-cd /root \
+menu \
 && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install noVNC websockify
+RUN set -x \
+    && cd /root && git clone https://github.com/kanaka/noVNC.git\
+    && cd noVNC/utils && git clone https://github.com/kanaka/websockify websockify \
+    && cd /root
 
 # 增加启动脚本
 ADD startup.sh /startup.sh

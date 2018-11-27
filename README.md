@@ -11,7 +11,7 @@ Web桌面的Docker化Kali linux
 ```
 docker run -d --name kaliweb -p 127.0.0.1:6080:6080 wwek/kaliweb
 ```
-浏览器访问 http://127.0.0.1:6080/vnc.html 即刻体验
+浏览器访问 http://127.0.0.1:6080/index.html 即刻体验
 
 ### dev镜像
 包含一些开发环境的
@@ -21,7 +21,7 @@ docker run -d --name kaliweb -p 127.0.0.1:6080:6080 wwek/kaliweb
 ```
 docker run -d --name kaliweb-dev -p 127.0.0.1:6080:6080 wwek/kaliweb:dev
 ```
-浏览器访问 http://127.0.0.1:6080/vnc.html 即刻体验
+浏览器访问 http://127.0.0.1:6080/index.html 即刻体验
 
 ## 自定义镜像
 如果基础镜像和dev镜像都不能满足你的需求可以从
